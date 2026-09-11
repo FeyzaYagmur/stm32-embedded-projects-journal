@@ -20,10 +20,13 @@ The projects within this repository integrate the following hardware architectur
 ---
 
 ## Development Environment & Tech Stack
-* **Microcontroller:** STM32 (ARM Cortex-M4 Architecture)
-* **IDE & Configuration:** STM32CubeIDE & STM32CubeMX
-* **Software Layer:** STM32Cube HAL
-* **Developer:** Feyza Yağmur Arat — Mersin University, Electrical & Electronics Engineering
+
+
+👩‍💻 **Developer:** Feyza Yağmur Arat  
+🎓 **Department:** Mersin University — Electrical and Electronics Engineering  
+🛠️ **Development Environment:** STM32CubeIDE | STM32Cube HAL  
+🎯 **Hardware:** STM32F407VG Discovery Board  
+
 
 ---
 
