@@ -4,7 +4,7 @@ This project demonstrates an event-driven telemetry pipeline on an STM32 microco
 
 ---
 
-## ⚙️ Hardware Configuration
+## ⚙️  Hardware Configuration
 
 * **MCU:** STM32 (ARM Cortex-M4)
 * **Timebase Generator:** TIM2 (Configured for periodic 1.0 Hz / 1-second update interrupts)
@@ -14,7 +14,7 @@ This project demonstrates an event-driven telemetry pipeline on an STM32 microco
 
 ---
 
-## 🔍 Key Engineering Principles
+## 🔍  Key Engineering Principles
 
 * **Zero-Overhead Main Loop:** `while(1)` remains entirely empty; system execution is wholly orchestrated by asynchronous peripheral hardware interrupts.
 * **Periodic Timebase Trigger:** TIM2 fires `HAL_TIM_PeriodElapsedCallback` every 1000 ms, initiating rapid analog conversion without software timing drift.
@@ -23,7 +23,7 @@ This project demonstrates an event-driven telemetry pipeline on an STM32 microco
 
 ---
 
-## 💻 System Telemetry Output
+## 💻  System Telemetry Output
 
 Every 1 second, the host serial terminal receives the formatted voltage reading:
 
