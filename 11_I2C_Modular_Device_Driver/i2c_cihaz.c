@@ -31,7 +31,7 @@ uint8_t Cihaz_Hazir_Mi(I2C_HandleTypeDef *hi2c, uint8_t adress)
   * @param  gonder_veri Data byte to transmit
   * @retval 1: Success, 0: Error
   */
-uint8_t Cihaz_Yaz(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t gonder_veri)
+uint8_t Cihaz_Yaz(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t tx_data)
 {
   if (HAL_I2C_Master_Transmit(hi2c, adress, &gonder_veri, 1, 100) == HAL_OK)
   {
@@ -50,7 +50,7 @@ uint8_t Cihaz_Yaz(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t gonder_veri)
   * @param  gelen_veri Pointer to destination buffer
   * @retval 1: Success, 0: Error
   */
-uint8_t Cihaz_Oku(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t *gelen_veri)
+uint8_t Cihaz_Oku(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t *rx_data)
 {
   if (HAL_I2C_Master_Receive(hi2c, adress, gelen_veri, 1, 100) == HAL_OK)
   {
