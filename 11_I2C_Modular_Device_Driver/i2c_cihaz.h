@@ -14,7 +14,7 @@
 
 /* Driver function prototypes (Returns 1 on success, 0 on failure) */
 uint8_t Cihaz_Hazir_Mi(I2C_HandleTypeDef *hi2c, uint8_t adress);
-uint8_t Cihaz_Yaz(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t gonder_veri);
-uint8_t Cihaz_Oku(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t *gelen_veri);
+uint8_t Cihaz_Yaz(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t tx_data);
+uint8_t Cihaz_Oku(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t *rx_data);
 
 #endif /* I2C_CIHAZ_H */
