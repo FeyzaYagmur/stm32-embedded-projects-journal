@@ -28,7 +28,7 @@ uint8_t Cihaz_Hazir_Mi(I2C_HandleTypeDef *hi2c, uint8_t adress)
   * @brief  Transmits a single byte to the target device
   * @param  hi2c        Pointer to I2C handle
   * @param  adress      8-bit shifted device address
-  * @param  gonder_veri Data byte to transmit
+  * @param  tx_data Data byte to transmit
   * @retval 1: Success, 0: Error
   */
 uint8_t Cihaz_Yaz(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t tx_data)
@@ -47,7 +47,7 @@ uint8_t Cihaz_Yaz(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t tx_data)
   * @brief  Reads a single byte from the target device
   * @param  hi2c       Pointer to I2C handle
   * @param  adress     8-bit shifted device address
-  * @param  gelen_veri Pointer to destination buffer
+  * @param  rx_data Pointer to destination buffer
   * @retval 1: Success, 0: Error
   */
 uint8_t Cihaz_Oku(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t *rx_data)
