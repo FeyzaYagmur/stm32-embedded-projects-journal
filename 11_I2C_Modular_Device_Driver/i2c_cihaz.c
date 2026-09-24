@@ -33,7 +33,7 @@ uint8_t Cihaz_Hazir_Mi(I2C_HandleTypeDef *hi2c, uint8_t adress)
   */
 uint8_t Cihaz_Yaz(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t tx_data)
 {
-  if (HAL_I2C_Master_Transmit(hi2c, adress, &gonder_veri, 1, 100) == HAL_OK)
+  if (HAL_I2C_Master_Transmit(hi2c, adress, &tx_data, 1, 100) == HAL_OK)
   {
     return 1;
   }
@@ -52,7 +52,7 @@ uint8_t Cihaz_Yaz(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t tx_data)
   */
 uint8_t Cihaz_Oku(I2C_HandleTypeDef *hi2c, uint8_t adress, uint8_t *rx_data)
 {
-  if (HAL_I2C_Master_Receive(hi2c, adress, gelen_veri, 1, 100) == HAL_OK)
+  if (HAL_I2C_Master_Receive(hi2c, adress, rx_data, 1, 100) == HAL_OK)
   {
     return 1;
   }
