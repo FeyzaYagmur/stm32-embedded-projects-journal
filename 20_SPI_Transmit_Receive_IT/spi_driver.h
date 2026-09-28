@@ -17,6 +17,9 @@
 #define REG_SHUTDOWN            0x0C  /* Power mode / shutdown register */
 #define REG_DATA_X              0x01  /* Telemetry measurement register */
 
+/* Shared pointer reference for chained interrupt transitions */
+extern uint8_t *p_target_rx_buf;
+
 /* Driver API function prototypes */
 void SPI_Driver_Write_Reg_IT(SPI_HandleTypeDef *hspi, uint8_t reg_addr, uint8_t data);
 void SPI_Driver_Read_Reg_IT(SPI_HandleTypeDef *hspi, uint8_t reg_addr, uint8_t *p_rx_buf);
