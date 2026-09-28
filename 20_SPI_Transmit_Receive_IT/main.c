@@ -1,6 +1,6 @@
 /**
  * @file    main.c
- * @brief   Application Layer: Non-Blocking Telemetry Acquisition via Chained SPI Interrupts
+ * @brief   Application Layer: Event-Driven SPI Telemetry Acquisition via Interrupts
  * @author  Feyza Yagmur Arat
  * @note    Hardware inits (Clock, GPIO, SPI1 with NVIC) configured via CubeMX.
  */
@@ -35,10 +35,28 @@ int main(void)
 
   while (1)
   {
-    /* 2. Dispatch asynchronous chained read request */
+    /* 2. Dispatch non-blocking chained read request */
     SPI_Driver_Read_Reg_IT(&hspi1, REG_DATA_X, &rx_telemetry);
 
-    /* Evaluate acquired telemetry metric */
+    /* Superloop pace without blocking SPI transactions */
+    HAL_Delay(250);
+  }
+}
+
+/**
+  * @brief  SPI Rx Transfer completed callback: Latches CS and evaluates data
+  * @param  hspi Pointer to SPI handle
+  * @retval None
+  */
+void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+  if (hspi->Instance == SPI1)
+  {
+    /* 1. De-assert CS (Active-HIGH) to terminate transaction safely */
+    HAL_GPIO_WritePin(CS_GPIO_PORT, CS_PIN, GPIO_PIN_SET);
+    p_target_rx_buf = NULL;
+
+    /* 2. Process telemetry immediately upon arrival in SRAM */
     if (rx_telemetry > 50)
     {
       HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
@@ -47,8 +65,5 @@ int main(void)
     {
       HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
     }
-
-    /* Periodic loop cadence */
-    HAL_Delay(250);
   }
 }
